@@ -6,60 +6,94 @@
   <meta name="description" content="David Ambalov – SEO trafficker. The kind that ranks first and pleads the fifth." />
   <title>David Ambalov</title>
   <style>
+    /* ------------- 
+       THEME COLORS 
+       ------------- */
     :root {
       --bg-light: #f9f9f9;
       --text-light: #222;
-      --bg-dark: linear-gradient(135deg, #2E0249, #6A0572, #AA0D91);
+      
+      /* Rich purple bleeding gradient */
+      --bg-dark: radial-gradient(circle at center, #220841 10%, #300b65 70%);
       --text-dark: #f1f1f1;
-      --link-color: #76a8ff;
+      
+      /* Frosty card backgrounds */
+      --card-light: rgba(255, 255, 255, 0.7);
+      --card-dark: rgba(255, 255, 255, 0.12);
+      
+      /* Link colors */
+      --link-color-light: #0077cc;
+      --link-color-dark: #9c9eff;
+      
+      /* Card border outlines for the frosty effect */
+      --card-border-light: rgba(255, 255, 255, 0.3);
+      --card-border-dark: rgba(255, 255, 255, 0.4);
     }
-
-    /* Global Styles */
+    
+    /* ------------
+       BASE STYLES
+       ------------ */
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       margin: 0;
       padding: 0;
       height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      transition: background 0.4s ease, color 0.4s ease;
-      background: var(--bg-light);
-      color: var(--text-light);
-    }
-
-    body.dark {
+      text-align: center;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      transition: background 0.5s ease, color 0.5s ease;
+      
+      /* We'll set dark mode as default */
       background: var(--bg-dark);
       color: var(--text-dark);
     }
-
-    /* Card (glass frosty effect) */
+    
+    /* Dark mode using a class (for toggling) */
+    body:not(.dark) {
+      background: var(--bg-light);
+      color: var(--text-light);
+    }
+    
+    /* --------------
+       FROSTY CARD 
+       -------------- */
     .card {
-      background: rgba(255, 255, 255, 0.15);
-      border-radius: 10px;
-      padding: 2em;
       backdrop-filter: blur(10px);
-      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-      text-align: center;
+      -webkit-backdrop-filter: blur(10px);
+      border-radius: 12px;
+      padding: 2rem 2.5rem;
       max-width: 400px;
-      width: 90%;
+      width: 85%;
       animation: fadeIn 1.2s ease-out;
+      border: 1px solid var(--card-border-dark);
+      
+      /* Dark mode default */
+      background: var(--card-dark);
     }
-
-    /* Headings */
+    
+    body:not(.dark) .card {
+      background: var(--card-light);
+      border-color: var(--card-border-light);
+    }
+    
+    /* --------------
+       HEADINGS 
+       -------------- */
     h1 {
-      font-size: 2.8rem;
-      margin-bottom: 0.2em;
+      font-size: 2.4rem;
+      margin-bottom: 0.5rem;
     }
-
     h2 {
       font-size: 1.1rem;
       font-weight: normal;
-      margin: 0.2em 0 1.5em;
+      margin: 0 0 1.5rem;
       color: inherit;
     }
-
-    /* Navigation links */
+    
+    /* --------------
+       LINK LIST 
+       -------------- */
     ul {
       list-style: none;
       padding: 0;
@@ -68,17 +102,24 @@
     li {
       margin: 0.5em 0;
     }
+    
     a {
       text-decoration: none;
-      color: var(--link-color);
-      font-weight: 500;
+      color: var(--link-color-dark);
       transition: color 0.3s ease;
+      font-weight: 500;
     }
+    body:not(.dark) a {
+      color: var(--link-color-light);
+    }
+    
     a:hover {
       text-decoration: underline;
     }
-
-    /* Toggle Button */
+    
+    /* --------------
+       TOGGLE BUTTON
+       -------------- */
     .toggle {
       position: absolute;
       top: 1.2rem;
@@ -90,21 +131,39 @@
       border: 1px solid #ccc;
       border-radius: 5px;
       padding: 5px 10px;
-      transition: all 0.3s ease;
+      transition: background-color 0.3s ease, color 0.3s ease;
     }
     .toggle:hover {
-      background-color: rgba(255, 255, 255, 0.1);
+      background-color: rgba(255, 255, 255, 0.15);
     }
-
-    /* Fade-in Animation */
+    body.dark .toggle {
+      color: #ccc;
+      border-color: #888;
+    }
+    body.dark .toggle:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+    
+    /* -------------
+       ANIMATIONS
+       ------------- */
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+      from { 
+        opacity: 0; 
+        transform: translateY(20px);
+      }
+      to { 
+        opacity: 1; 
+        transform: translateY(0);
+      }
     }
   </style>
 </head>
-<body>
+<body class="dark">
+  <!-- THEME TOGGLE BUTTON -->
   <button class="toggle" onclick="toggleMode()">Toggle Theme</button>
+  
+  <!-- FROSTY CARD -->
   <div class="card">
     <h1>David Ambalov</h1>
     <h2>SEO trafficker. The kind that ranks first and pleads the fifth.</h2>
@@ -114,8 +173,10 @@
       <li><a href="https://about.me/davidambalov/getstarted" target="_blank">About.me</a></li>
     </ul>
   </div>
+  
   <script>
     function toggleMode() {
+      // Toggle 'dark' on body, if the class is removed then light mode is used
       document.body.classList.toggle("dark");
     }
   </script>
