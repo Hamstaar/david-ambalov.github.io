@@ -6,54 +6,88 @@
   <meta name="description" content="David Ambalov – SEO trafficker. The kind that ranks first and pleads the fifth." />
   <title>David Ambalov</title>
   <style>
+    :root {
+      --bg: #0f0f23;
+      --card-bg: rgba(255, 255, 255, 0.03);
+      --text: #f0f0f0;
+      --accent: #6a5acd;
+      --link: #61dafb;
+      --link-hover: #98f5ff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f9f9f9;
-      color: #222;
       margin: 0;
-      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: radial-gradient(circle at center, #1a1337, #0f0f23);
+      color: var(--text);
       display: flex;
       flex-direction: column;
-      justify-content: center;
       align-items: center;
-      height: 100vh;
+      justify-content: center;
+      min-height: 100vh;
       text-align: center;
+      padding: 2rem;
     }
+
+    .container {
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 2.5rem 2rem;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 0 30px rgba(106, 90, 205, 0.3);
+      max-width: 600px;
+      width: 100%;
+    }
+
     h1 {
-      font-size: 2.8rem;
-      margin-bottom: 0.3em;
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text);
     }
+
     h2 {
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       font-weight: normal;
-      color: #555;
-      margin-top: 0;
-      margin-bottom: 2em;
+      color: #ccc;
+      margin-bottom: 2rem;
     }
+
     ul {
       list-style: none;
       padding: 0;
+      margin: 0;
     }
+
     li {
-      margin: 0.5em 0;
+      margin: 0.75rem 0;
     }
+
     a {
       text-decoration: none;
-      color: #0077cc;
+      color: var(--link);
       font-weight: 500;
+      font-size: 1rem;
+      transition: color 0.3s ease;
     }
+
     a:hover {
-      color: #005fa3;
+      color: var(--link-hover);
     }
   </style>
 </head>
 <body>
-  <h1>David Ambalov</h1>
-  <h2>SEO trafficker. The kind that ranks first and pleads the fifth.</h2>
-  <ul>
-    <li><a href="https://www.linkedin.com/in/david-ambalov-1a527828b" target="_blank">LinkedIn</a></li>
-    <li><a href="https://davidambalov.carrd.co/" target="_blank">Carrd</a></li>
-    <li><a href="https://about.me/davidambalov/getstarted" target="_blank">About.me</a></li>
-  </ul>
+  <div class="container">
+    <h1>David Ambalov</h1>
+    <h2>SEO trafficker. The kind that ranks first and pleads the fifth.</h2>
+    <ul>
+      <li><a href="https://www.linkedin.com/in/david-ambalov-1a527828b" target="_blank">LinkedIn</a></li>
+      <li><a href="https://davidambalov.carrd.co/" target="_blank">Carrd</a></li>
+      <li><a href="https://about.me/davidambalov/getstarted" target="_blank">About.me</a></li>
+    </ul>
+  </div>
 </body>
 </html>
