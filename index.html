@@ -7,80 +7,105 @@
   <title>David Ambalov</title>
   <style>
     :root {
-      --bg: #0f0f23;
-      --card-bg: rgba(255, 255, 255, 0.03);
-      --text: #f0f0f0;
-      --accent: #6a5acd;
-      --link: #61dafb;
-      --link-hover: #98f5ff;
+      --bg-light: #f9f9f9;
+      --text-light: #222;
+      --bg-dark: linear-gradient(135deg, #2E0249, #6A0572, #AA0D91);
+      --text-dark: #f1f1f1;
+      --link-color: #76a8ff;
     }
 
-    * {
-      box-sizing: border-box;
-    }
-
+    /* Global Styles */
     body {
-      margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: radial-gradient(circle at center, #1a1337, #0f0f23);
-      color: var(--text);
+      margin: 0;
+      padding: 0;
+      height: 100vh;
       display: flex;
-      flex-direction: column;
-      align-items: center;
       justify-content: center;
-      min-height: 100vh;
+      align-items: center;
+      transition: background 0.4s ease, color 0.4s ease;
+      background: var(--bg-light);
+      color: var(--text-light);
+    }
+
+    body.dark {
+      background: var(--bg-dark);
+      color: var(--text-dark);
+    }
+
+    /* Card (glass frosty effect) */
+    .card {
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 10px;
+      padding: 2em;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
       text-align: center;
-      padding: 2rem;
+      max-width: 400px;
+      width: 90%;
+      animation: fadeIn 1.2s ease-out;
     }
 
-    .container {
-      background: var(--card-bg);
-      border-radius: 16px;
-      padding: 2.5rem 2rem;
-      backdrop-filter: blur(8px);
-      box-shadow: 0 0 30px rgba(106, 90, 205, 0.3);
-      max-width: 600px;
-      width: 100%;
-    }
-
+    /* Headings */
     h1 {
-      font-size: 2.5rem;
-      margin-bottom: 0.5rem;
-      color: var(--text);
+      font-size: 2.8rem;
+      margin-bottom: 0.2em;
     }
 
     h2 {
       font-size: 1.1rem;
       font-weight: normal;
-      color: #ccc;
-      margin-bottom: 2rem;
+      margin: 0.2em 0 1.5em;
+      color: inherit;
     }
 
+    /* Navigation links */
     ul {
       list-style: none;
       padding: 0;
       margin: 0;
     }
-
     li {
-      margin: 0.75rem 0;
+      margin: 0.5em 0;
     }
-
     a {
       text-decoration: none;
-      color: var(--link);
+      color: var(--link-color);
       font-weight: 500;
-      font-size: 1rem;
       transition: color 0.3s ease;
     }
-
     a:hover {
-      color: var(--link-hover);
+      text-decoration: underline;
+    }
+
+    /* Toggle Button */
+    .toggle {
+      position: absolute;
+      top: 1.2rem;
+      right: 1.5rem;
+      cursor: pointer;
+      font-size: 0.9rem;
+      color: #ccc;
+      background: none;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 5px 10px;
+      transition: all 0.3s ease;
+    }
+    .toggle:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    /* Fade-in Animation */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
 <body>
-  <div class="container">
+  <button class="toggle" onclick="toggleMode()">Toggle Theme</button>
+  <div class="card">
     <h1>David Ambalov</h1>
     <h2>SEO trafficker. The kind that ranks first and pleads the fifth.</h2>
     <ul>
@@ -89,5 +114,10 @@
       <li><a href="https://about.me/davidambalov/getstarted" target="_blank">About.me</a></li>
     </ul>
   </div>
+  <script>
+    function toggleMode() {
+      document.body.classList.toggle("dark");
+    }
+  </script>
 </body>
 </html>
